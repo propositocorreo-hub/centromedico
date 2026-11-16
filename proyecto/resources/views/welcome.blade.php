@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sistema de Gestión Odontológica</title>
+    @vite(['resources/css/estilosPlantilla.css'])
+    @vite(['resources/css/estilos.css'])
+</head>
+
+<body>
+    <div id="contenedor">
+        <div id="encabezado">
+            <h1>Sistema de Gestión Odontológica</h1>
+        </div>
+        <ul id="menu">
+            <li><a href="{{ url('/') }}">Inicio</a></li>
+            <li><a href="{{ url('/asignar') }}">Asignar</a></li>
+            <li><a href="{{ url('/consultar') }}">Consultar Cita</a></li>
+            <li><a href="{{ url('/cancelar') }}">Cancelar Cita</a></li>
+            <li><a href="{{ route('login.view') }}">Iniciar Sesión</a></li>
+        </ul>
+        <div id="contenido">
+            <h2>Información General</h2>
+            <p>El Sistema de Gestión Odontológica permite administrar la información de los pacientes, tratamientos y citas a través de una interfaz web.</p>
+            <p>El sistema cuenta con las siguientes secciones:
+            <ul>
+                <li>Asignar cita</li>
+                <li>Consultar cita</li>
+                <li>Cancelar cita</li>
+            </ul>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
