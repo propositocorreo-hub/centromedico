@@ -18,6 +18,7 @@
             <li><a href="{{ url('/consultar') }}">Consultar Cita</a></li>
             <li><a href="{{ url('/cancelar') }}">Cancelar Cita</a></li>
             <li><a href="{{ route('login.view') }}">Iniciar Sesión</a></li>
+            <li><a href="{{ route('login.view') }}">Registrarse</a></li>
         </ul>
         <div id="contenido">
             <h2>Información General</h2>
