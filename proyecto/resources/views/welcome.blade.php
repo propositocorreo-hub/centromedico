@@ -1,37 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
-    <title>Sistema de Gestión Odontológica</title>
-    @vite(['resources/css/estilosPlantilla.css'])
-    @vite(['resources/css/estilos.css'])
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Aprendiz</title>
 </head>
 
 <body>
-    <div id="contenedor">
-        <div id="encabezado">
-            <h1>Sistema de Gestión Odontológica</h1>
+    <h1>Registro de aprendiz</h1>
+    <br>
+    <form action="{{url('/aprendices')}}" method="POST">
+        <div>
+            <label for="nombre">Nombre</label>
+            <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                value="{{old('nombre')}}"
+                required>
+
+            @error('nombre')
+            <p style="color:red;">{{message}}</p>
+            @enderror
         </div>
-        <ul id="menu">
-            <li><a href="{{ url('/') }}">Inicio</a></li>
-            <li><a href="{{ url('/asignar') }}">Asignar</a></li>
-            <li><a href="{{ url('/consultar') }}">Consultar Cita</a></li>
-            <li><a href="{{ url('/cancelar') }}">Cancelar Cita</a></li>
-            <li><a href="{{ route('login.view') }}">Iniciar Sesión</a></li>
-            <li><a href="{{ route('login.view') }}">Registrarse</a></li>
-        </ul>
-        <div id="contenido">
-            <h2>Información General</h2>
-            <p>El Sistema de Gestión Odontológica permite administrar la información de los pacientes, tratamientos y citas a través de una interfaz web.</p>
-            <p>El sistema cuenta con las siguientes secciones:
-            <ul>
-                <li>Asignar cita</li>
-                <li>Consultar cita</li>
-                <li>Cancelar cita</li>
-            </ul>
-            </p>
+
+        <br>
+
+        <div>
+            <label for="programa">Programa de formacion</label>
+            <input
+                type="text"
+                id="programa"
+                name="programa"
+                value="{{old('programa')}}"
+                required>
+
+            @error('programa')
+            <p style="color:red;">{{message}}</p>
+            @enderror
         </div>
-    </div>
+
+        <br>
+
+        <button type="submit">Presentar aprendiz</button>
+
+        <p><a href="{{url('/aprendices')}}">Ver aprendices registrados</a></p>
+
+
+    </form>
 </body>
 
 </html>
