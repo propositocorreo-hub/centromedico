@@ -38,6 +38,9 @@
             @endforelse
         </tbody>
     </table>
+    <form action="{{ url('/aprendices/pdf') }}" method="GET" style="display: inline;">
+        <button type="submit">Generar PDF</button>
+    </form>
     <p><a href="{{url('/aprendices/crear')}}">Registrar otro aprendiz</a></p>
 </body>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Dominio\Aprendiz;
 use App\Models\Aprendiz as AprendizModelo;
 use App\Dominio\Persona;
@@ -37,8 +38,8 @@ class PersonaController extends Controller
                 'nombre.max' => 'El nombre no puede superar los 100 caracteres',
 
                 'programa.required' => 'Debe ingresar el programa de formacion',
-                'programa.string' => 'El nombre debe ser texto',
-                'programa.max' => 'El nombre no puede superar los 150 caracteres',
+                'programa.string' => 'El programa debe ser texto',
+                'programa.max' => 'El programa no puede superar los 150 caracteres',
             ]
         );
         AprendizModelo::create($datos);
@@ -84,5 +85,15 @@ class PersonaController extends Controller
 
         // Redirigimos de vuelta al listado de aprendices
         return redirect('/aprendices');
+    }
+
+    // Exportar pdf
+    public function exportarPdf()
+    {
+        $aprendices = AprendizModelo::orderByDesc('id')->get();
+        $pdf = Pdf::loadView('aprendices.pdf', ['aprendices' => $aprendices]);
+
+        // Descarga directa (o usa ->stream('reporte_aprendices.pdf') para verlo en el navegador)
+        return $pdf->download('reporte_aprendices.pdf');
     }
 }
